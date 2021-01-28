@@ -1,0 +1,162 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "appname": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "./custom-webpack.config.js",
+              "mergeStrategies": {
+                "resolve.mainFields": "prepend"
+              }
+            },
+            "outputPath": "dist/appname",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "src/js/app.min.js",
+              "src/js/PostConfig.js",
+              "src/styles/grapheditor.css",
+              "src/mxgraph/css/common.css",
+              "src/mxgraph/css/explorer",
+              "src/js/croppie/croppie.min.css",
+              "src/js/croppie/croppie.min.js",
+              "src/resources/dia.txt",
+              "src/js/diagramly/EditorUi.js",
+              "src/js/diagramly/Menus.js"
+            ],
+            "styles": [{
+              "input": "./node_modules/bootstrap/dist/css/bootstrap.min.css"},
+              "./src/styles/grapheditor.css"
+            ],
+            "scripts": ["./node_modules/jquery/dist/jquery.slim.min.js",
+              "./node_modules/popper.js/dist/umd/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              {
+                "input":  "./src/js/app.min.js"}
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "browserTarget": "PureCloudAngularTest:build"
+          }
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "browserTarget": "appname:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "appname:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-builders/custom-webpack:extract-i18n",
+          "options": {
+            "browserTarget": "appname:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/custom-webpack:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+
+            ],
+            "styles": [
+              {
+                "input": "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+              }
+            ],
+            "scripts":[ "./node_modules/jquery/dist/jquery.slim.min.js",
+            "./node_modules/popper.js/dist/umd/popper.min.js",
+            "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-builders/custom-webpack:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-builders/custom-webpack:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "appname:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "appname:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "appname",
+  "cli": {
+    "analytics": "c357f113-a838-4596-afc1-6a4c9f2e5865"
+  }
+}
