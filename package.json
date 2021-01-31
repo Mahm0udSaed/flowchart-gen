@@ -30,7 +30,9 @@
     "@syncfusion/ej2-angular-splitbuttons": "^18.3.52",
     "@syncfusion/ej2-lineargauge": "^18.3.47",
     "bootstrap": "^4.6.0",
+    "jquery": "^3.5.1",
     "ngx-flowchart": "0.0.5",
+    "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

@@ -31,6 +31,7 @@
 		{description: 'diagramPngDesc', extension: 'png', mimeType: 'image/png'},
 		{description: 'diagramSvgDesc', extension: 'svg', mimeType: 'image/svg'},
 		{description: 'diagramHtmlDesc', extension: 'html', mimeType: 'text/html'},
+    {description: 'diagramTextDesc', extension: 'txt', mimeType: 'plain/text'},
 		{description: 'diagramXmlDesc', extension: 'xml', mimeType: 'text/xml'}];
 
 	/**
@@ -44,7 +45,8 @@
 	Editor.prototype.fileExtensions = [
 		{ext: 'html', title: 'filetypeHtml'},
 		{ext: 'png', title: 'filetypePng'},
-		{ext: 'svg', title: 'filetypeSvg'}];
+		{ext: 'svg', title: 'filetypeSvg'},
+    {ext: 'txt', title: 'filetypeText'},];
 
 	/**
 	 *
