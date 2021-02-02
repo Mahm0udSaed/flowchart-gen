@@ -280,6 +280,7 @@
 			}
 
 			mxscript(drawDevUrl + 'js/PostConfig.js');
+      mxscript(drawDevUrl + 'js/xmlToJSON.js');
 		}
 		else
 		{
@@ -303,7 +304,7 @@
 						{
 							mxscript('js/PostConfig.js');
 						}
-
+            mxscript('js/xmlToJSON.js');
 						// Electron
 						if (mxIsElectron)
 						{
@@ -318,6 +319,8 @@
 											mxscript('js/shapes.min.js', function()
 											{
 												mxscript('js/PostConfig.js');
+                        mxscript('js/xmlToJSON.js');
+
 											});
 										});
 									});

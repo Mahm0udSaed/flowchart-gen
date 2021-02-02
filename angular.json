@@ -40,7 +40,8 @@
               "src/js/croppie/croppie.min.js",
               "src/resources/dia.txt",
               "src/js/diagramly/EditorUi.js",
-              "src/js/diagramly/Menus.js"
+              "src/js/diagramly/Menus.js",
+              "src/js/xmlToJSON.js"
             ],
             "styles": [{
               "input": "./node_modules/bootstrap/dist/css/bootstrap.min.css"},
